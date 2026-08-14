@@ -204,6 +204,18 @@
 			border-left-color: rgba(43, 36, 32, 0.2);
 		}
 
+		/* Wymagany przez licencję CCA 3.0 szablonu credit dla HTML5 UP —
+		   zostaje w treści (link, nie usunięty/ukryty), ale wyciszony
+		   kolorystycznie tak, żeby wzrok szedł na "Wykonanie: widacwas.pl". */
+		#footer .copyright li.credit,
+		#footer .copyright li.credit a {
+			color: rgba(43, 36, 32, 0.35);
+		}
+
+			#footer .copyright li.credit a:hover {
+				color: rgba(43, 36, 32, 0.6);
+			}
+
 /* Service cards (Oferta) */
 
 	.service-card {
