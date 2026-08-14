@@ -1,0 +1,330 @@
+/*
+	Beauty Atelier — restyling na bazie Astral by HTML5 UP
+	Paleta: kremowe tło, róż pudrowy, grafit, złoty akcent.
+	Ten plik nadpisuje kolory/typografię z main.css i dodaje nowe komponenty
+	(karty oferty, opinie, lightbox galerii) — main.css pozostaje nietknięty.
+*/
+
+:root {
+	--color-bg: #F7F1EC;
+	--color-panel: #FFFDFB;
+	--color-accent: #D9A9A0;
+	--color-accent-dark: #C98E82;
+	--color-ink: #2B2420;
+	--color-ink-soft: #5C5248;
+	--color-gold: #C9A25C;
+	--color-gold-dark: #B48B44;
+	--color-border: rgba(43, 36, 32, 0.12);
+}
+
+/* Base */
+
+	body {
+		background-image: none;
+		background-color: var(--color-bg);
+	}
+
+	body, input, textarea, select {
+		font-family: 'Lato', sans-serif;
+		color: var(--color-ink-soft);
+	}
+
+	strong, b, h1, h2, h3, h4, h5, h6 {
+		font-family: 'Playfair Display', serif;
+		font-weight: 600;
+		color: var(--color-ink);
+	}
+
+	#main > .panel.intro header h1 {
+		font-weight: 700;
+	}
+
+	header > p {
+		color: var(--color-ink-soft);
+	}
+
+	blockquote {
+		border-left-color: var(--color-accent);
+	}
+
+	hr {
+		border-top-color: var(--color-border);
+	}
+
+	#main a:not(.button):not(.jumplink) {
+		color: var(--color-ink);
+		text-decoration-color: var(--color-accent);
+	}
+
+	#main a:not(.button):not(.jumplink):hover {
+		color: var(--color-gold-dark);
+		text-decoration-color: var(--color-gold);
+	}
+
+/* Form */
+
+	form label {
+		color: var(--color-ink);
+	}
+
+	form input[type="text"],
+	form input[type="email"],
+	form input[type="password"],
+	form select,
+	form textarea {
+		background: #F1E9E1;
+		color: var(--color-ink);
+	}
+
+		form input[type="text"]:focus,
+		form input[type="email"]:focus,
+		form input[type="password"]:focus,
+		form select:focus,
+		form textarea:focus {
+			background: #EBE0D5;
+		}
+
+	form ::placeholder {
+		color: #A79C8E;
+	}
+
+/* Buttons */
+
+	input[type="button"],
+	input[type="submit"],
+	input[type="reset"],
+	button,
+	.button {
+		background-color: var(--color-ink);
+		color: #F7F1EC;
+		letter-spacing: 0.03em;
+		text-decoration: none;
+	}
+
+		input[type="button"]:hover,
+		input[type="submit"]:hover,
+		input[type="reset"]:hover,
+		button:hover,
+		.button:hover {
+			background-color: var(--color-gold);
+			color: var(--color-ink);
+		}
+
+		input[type="button"]:active,
+		input[type="submit"]:active,
+		input[type="reset"]:active,
+		button:active,
+		.button:active {
+			background-color: var(--color-gold-dark);
+			color: var(--color-ink);
+		}
+
+/* Nav */
+
+	#nav a {
+		color: var(--color-ink);
+	}
+
+		#nav a:after {
+			border-bottom-color: var(--color-gold);
+		}
+
+		#nav a span {
+			background: var(--color-ink);
+			color: #F7F1EC;
+		}
+
+			#nav a span:after {
+				border-top-color: var(--color-ink);
+			}
+
+		#nav a:hover {
+			color: var(--color-gold-dark);
+		}
+
+/* Wrapper / Main */
+
+	#main {
+		background: var(--color-panel);
+		box-shadow: 0px 1px 0px 0px rgba(43, 36, 32, 0.15), 0 1.5em 3em rgba(43, 36, 32, 0.08);
+	}
+
+	#main > .panel.intro .pic .arrow {
+		background: rgba(43, 36, 32, 0.75);
+	}
+
+/* Footer */
+
+	#footer {
+		color: rgba(43, 36, 32, 0.55);
+	}
+
+		#footer a {
+			color: rgba(43, 36, 32, 0.75);
+		}
+
+			#footer a:hover {
+				color: var(--color-gold-dark);
+			}
+
+		#footer .copyright li {
+			border-left-color: rgba(43, 36, 32, 0.2);
+		}
+
+/* Service cards (Oferta) */
+
+	.service-card {
+		height: 100%;
+		padding: 1.75em 1.5em;
+		background: var(--color-bg);
+		border: solid 1px var(--color-border);
+		border-top: solid 3px var(--color-accent);
+		transition: border-color .25s ease-in-out, transform .25s ease-in-out;
+	}
+
+		.service-card:hover {
+			border-top-color: var(--color-gold);
+			transform: translateY(-0.25em);
+		}
+
+		.service-card h3 {
+			font-size: 1.1em;
+			margin-bottom: 0.5em;
+			line-height: 1.3em;
+		}
+
+		.service-card p {
+			font-size: 0.85em;
+			margin-bottom: 0.75em;
+		}
+
+		.service-card .price {
+			font-family: 'Playfair Display', serif;
+			font-size: 1em;
+			color: var(--color-gold-dark);
+			margin-bottom: 0;
+		}
+
+/* Review cards (Opinie) */
+
+	.review-card {
+		height: 100%;
+		padding: 1.75em 1.5em;
+		background: var(--color-bg);
+		border: solid 1px var(--color-border);
+		text-align: center;
+	}
+
+		.review-card blockquote {
+			border-left: 0;
+			padding: 0;
+			font-family: 'Playfair Display', serif;
+			font-style: italic;
+			font-size: 1.05em;
+			color: var(--color-ink);
+			margin-bottom: 1em;
+		}
+
+		.review-author {
+			color: var(--color-gold-dark);
+			font-size: 0.85em;
+			letter-spacing: 0.03em;
+			text-transform: uppercase;
+			margin-bottom: 0;
+		}
+
+/* Contact info block */
+
+	.contact-info {
+		margin-top: 2em;
+		padding-top: 2em;
+		border-top: solid 1px var(--color-border);
+	}
+
+		.contact-info h3 {
+			margin-bottom: 0.75em;
+		}
+
+		.contact-info ul {
+			list-style: none;
+			padding-left: 0;
+			margin-bottom: 0;
+		}
+
+			.contact-info ul li {
+				padding-left: 0;
+				margin-bottom: 0.6em;
+				font-size: 0.85em;
+			}
+
+			.contact-info ul li .icon {
+				color: var(--color-gold-dark);
+				width: 1.4em;
+				display: inline-block;
+				text-align: center;
+			}
+
+/* Gallery */
+
+	#work .image.fit img {
+		transition: opacity .25s ease-in-out;
+		cursor: zoom-in;
+	}
+
+	#work .image.fit:hover img {
+		opacity: 0.85;
+	}
+
+/* Lightbox */
+
+	.lightbox {
+		display: none;
+		position: fixed;
+		z-index: 1000;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(43, 36, 32, 0.92);
+		text-align: center;
+	}
+
+		.lightbox.active {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.lightbox img {
+			max-width: 90vw;
+			max-height: 85vh;
+			box-shadow: 0 1em 3em rgba(0, 0, 0, 0.5);
+		}
+
+		.lightbox-close {
+			position: absolute;
+			top: 1.25em;
+			right: 1.5em;
+			width: 2.25em;
+			height: 2.25em;
+			line-height: 2em;
+			background: transparent;
+			border: solid 2px rgba(247, 241, 236, 0.6);
+			border-radius: 50%;
+			color: #F7F1EC;
+			font-size: 1.5em;
+			cursor: pointer;
+			padding: 0;
+		}
+
+			.lightbox-close:hover {
+				border-color: var(--color-gold);
+				color: var(--color-gold);
+			}
+
+	@media screen and (max-width: 736px) {
+		.service-card,
+		.review-card {
+			margin-bottom: 0;
+		}
+	}
