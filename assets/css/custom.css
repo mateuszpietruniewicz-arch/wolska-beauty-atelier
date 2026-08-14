@@ -266,7 +266,18 @@
 
 /* Gallery */
 
+	/* Fixed aspect-ratio box so mixed portrait/landscape photos stay in a neat,
+	   even grid instead of rows jumping to whatever height each photo has. */
+	#work .image.fit {
+		aspect-ratio: 4 / 3;
+		overflow: hidden;
+	}
+
 	#work .image.fit img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
 		transition: opacity .25s ease-in-out;
 		cursor: zoom-in;
 	}
