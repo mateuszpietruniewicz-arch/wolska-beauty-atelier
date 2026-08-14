@@ -25,12 +25,12 @@
 	}
 
 	body, input, textarea, select {
-		font-family: 'Lato', sans-serif;
+		font-family: 'Work Sans', sans-serif;
 		color: var(--color-ink-soft);
 	}
 
 	strong, b, h1, h2, h3, h4, h5, h6 {
-		font-family: 'Playfair Display', serif;
+		font-family: 'Fraunces', serif;
 		font-weight: 600;
 		color: var(--color-ink);
 	}
@@ -153,6 +153,39 @@
 		background: rgba(43, 36, 32, 0.75);
 	}
 
+	/* Na bardzo szerokich ekranach karta (max-width: 45em z main.css) zostaje
+	   mała i otoczona dużą ilością pustego tła — poszerzamy ją tam, żeby
+	   layout nie wyglądał na niedokończony. */
+	@media screen and (min-width: 1400px) {
+		/* main.css ustawia stały `width: 45em` na #wrapper — samo podbicie
+		   max-width nic nie zmienia, trzeba nadpisać też width. */
+		#wrapper {
+			width: 64em;
+			max-width: 64em;
+		}
+	}
+
+	/* Alternatywa (Opcja B) zamiast poszerzania karty: subtelne, rozmyte tło
+	   za #wrapper na dużych ekranach, żeby pusta przestrzeń wyglądała na
+	   celowy, oddychający layout zamiast przypadkowej. Zostawione jako
+	   komentarz do decyzji — obie opcje nie powinny być włączone naraz.
+	@media screen and (min-width: 1400px) {
+		body {
+			background-image: url('../../images/hero.jpg');
+			background-size: cover;
+			background-position: center;
+		}
+		body:before {
+			content: '';
+			position: fixed;
+			top: 0; left: 0; width: 100%; height: 100%;
+			background: rgba(247, 241, 236, 0.85);
+			backdrop-filter: blur(50px);
+			z-index: -1;
+		}
+	}
+	*/
+
 /* Footer */
 
 	#footer {
@@ -199,7 +232,7 @@
 		}
 
 		.service-card .price {
-			font-family: 'Playfair Display', serif;
+			font-family: 'Fraunces', serif;
 			font-size: 1em;
 			color: var(--color-gold-dark);
 			margin-bottom: 0;
@@ -218,7 +251,7 @@
 		.review-card blockquote {
 			border-left: 0;
 			padding: 0;
-			font-family: 'Playfair Display', serif;
+			font-family: 'Fraunces', serif;
 			font-style: italic;
 			font-size: 1.05em;
 			color: var(--color-ink);
@@ -267,10 +300,15 @@
 /* Gallery */
 
 	/* Fixed aspect-ratio box so mixed portrait/landscape photos stay in a neat,
-	   even grid instead of rows jumping to whatever height each photo has. */
+	   even grid instead of rows jumping to whatever height each photo has.
+	   TODO: większość realnych zbliżeń beauty (oko/brwi) jest w pionie — po
+	   wgraniu docelowych zdjęć rozważ zmianę na aspect-ratio: 3 / 4, żeby
+	   kadrowanie nie ucinało niepotrzebnie góry/dołu. Trzeba wtedy też
+	   zaktualizować width/height na <img> w index.html (np. 600x800). */
 	#work .image.fit {
 		aspect-ratio: 4 / 3;
 		overflow: hidden;
+		background-color: var(--color-bg);
 	}
 
 	#work .image.fit img {
@@ -278,11 +316,16 @@
 		height: 100%;
 		object-fit: cover;
 		object-position: center;
-		transition: opacity .25s ease-in-out;
 		cursor: zoom-in;
+		opacity: 0;
+		transition: opacity .3s ease-in-out;
 	}
 
-	#work .image.fit:hover img {
+	#work .image.fit img.loaded {
+		opacity: 1;
+	}
+
+	#work .image.fit:hover img.loaded {
 		opacity: 0.85;
 	}
 

@@ -6,22 +6,27 @@ branżę beauty.
 
 ## Do zrobienia ręcznie przed publikacją
 
-Poniższe pliki to placeholdery (szare tło + napis "Miejsce na zdjęcie") —
-podmień je na finalne zdjęcia, zachowując te same nazwy i ścieżki, bez
-ruszania kodu HTML/CSS:
-
-- `images/hero.jpg` — zdjęcie w sekcji Home
-- `images/gallery/pic01.jpg` … `pic12.jpg` — zdjęcia w Galerii (kolejność
-  podpisów zgodna z `index.html`, sekcja `#work`)
-- `images/og-image.jpg` — obrazek podglądu przy udostępnianiu linku
-  (Open Graph); może być kopią `hero.jpg`
-
-Dodatkowo:
-
 - W `index.html`, w sekcji `#contact`, podmień
   `action="https://formspree.io/f/TWOJ_ID"` na prawdziwy endpoint
   Formspree (po założeniu konta na [formspree.io](https://formspree.io) i
   utworzeniu formularza).
+
+### Podmiana zdjęć w przyszłości — kompresja
+
+Przy każdej kolejnej podmianie zdjęć w `images/hero.jpg`,
+`images/gallery/pic01.jpg` … `pic12.jpg` i `images/og-image.jpg`,
+skompresuj je najpierw — zdjęcia prosto z telefonu/aparatu (kilka MB,
+kilka tysięcy px szerokości) mocno spowalniają ładowanie strony:
+
+- maksymalnie **1200 px** dłuższego boku
+- JPEG jakość **ok. 75–80%** (albo format WebP, jeśli używasz nowoczesnego
+  hostingu)
+- docelowo **40–80 KB na zdjęcie** (obecne zdjęcia w galerii ważą
+  100–160 KB — da się jeszcze zejść niżej)
+
+Najprościej przez [squoosh.app](https://squoosh.app) — wrzuć zdjęcie,
+ustaw resize + jakość, pobierz i wgraj do `/images/gallery/` pod tą samą
+nazwą.
 
 ## Struktura projektu
 
@@ -35,7 +40,7 @@ assets/
     fontawesome-all.min.css
   js/
     main.js          — logika paneli/nawigacji z oryginału Astral
-    lightbox.js       — lightbox galerii (vanilla JS)
+    lightbox.js       — lightbox galerii + fade-in zdjęć po załadowaniu (vanilla JS)
     jquery.min.js, browser.min.js, breakpoints.min.js, util.js
   webfonts/          — czcionki Font Awesome
 images/

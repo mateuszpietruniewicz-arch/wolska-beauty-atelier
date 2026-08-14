@@ -1,6 +1,26 @@
 /*
-	Prosty lightbox galerii — czysty vanilla JS, bez zewnętrznych bibliotek.
+	Galeria — lightbox oraz płynne pojawianie się zdjęć po załadowaniu,
+	czysty vanilla JS, bez zewnętrznych bibliotek.
 */
+
+// Fade-in dla zdjęć galerii — dodaje klasę .loaded gdy <img> się załaduje
+// (patrz #work .image.fit img w custom.css), żeby uniknąć "wyskoczenia"
+// niedoładowanego jpega zamiast płynnego pojawienia się.
+(function () {
+	'use strict';
+
+	document.querySelectorAll('#work .image.fit img').forEach(function (img) {
+		if (img.complete) {
+			img.classList.add('loaded');
+		} else {
+			img.addEventListener('load', function () {
+				img.classList.add('loaded');
+			});
+		}
+	});
+
+})();
+
 (function () {
 	'use strict';
 
